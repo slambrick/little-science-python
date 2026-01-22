@@ -20,4 +20,139 @@ mHe3 = 3.0160293*mu # Mass of He-3 [kg]
 # Conversion factors
 meV2J = 1.6021892*1E-22  # Convert from meV to J
 
-# Conversion functions
+# Neutron conversion functions
+def n_lambda_to_E(wavelength):
+    """
+    Convert neutron wavelength to energy
+    
+    Parameters
+    ----------
+    wavelength : float or array
+        Neutron wavelength [m]
+    
+    Returns
+    -------
+    energy : float or array
+        Neutron energy [meV]
+    """
+    energy = (h**2 / (2 * mn * wavelength**2)) / meV2J
+    return energy
+
+def n_E_to_lambda(energy):
+    """
+    Convert neutron energy to wavelength
+    
+    Parameters
+    ----------
+    energy : float or array
+        Neutron energy [meV]
+    
+    Returns
+    -------
+    wavelength : float or array
+        Neutron wavelength [m]
+    """
+    wavelength = h / np.sqrt(2 * mn * energy * meV2J)
+    return wavelength
+
+def n_lambda_to_p(wavelength):
+    """
+    Convert neutron wavelength to momentum
+    
+    Parameters
+    ----------
+    wavelength : float or array
+        Neutron wavelength [m]
+    
+    Returns
+    -------
+    momentum : float or array
+        Neutron momentum [kg⋅m/s]
+    """
+    momentum = h / wavelength
+    return momentum
+
+def n_p_to_lambda(momentum):
+    """
+    Convert neutron momentum to wavelength
+    
+    Parameters
+    ----------
+    momentum : float or array
+        Neutron momentum [kg⋅m/s]
+    
+    Returns
+    -------
+    wavelength : float or array
+        Neutron wavelength [m]
+    """
+    wavelength = h / momentum
+    return wavelength
+
+def n_E_to_p(energy):
+    """
+    Convert neutron energy to momentum
+    
+    Parameters
+    ----------
+    energy : float or array
+        Neutron energy [meV]
+    
+    Returns
+    -------
+    momentum : float or array
+        Neutron momentum [kg⋅m/s]
+    """
+    momentum = np.sqrt(2 * mn * energy * meV2J)
+    return momentum
+
+def n_p_to_E(momentum):
+    """
+    Convert neutron momentum to energy
+    
+    Parameters
+    ----------
+    momentum : float or array
+        Neutron momentum [kg⋅m/s]
+    
+    Returns
+    -------
+    energy : float or array
+        Neutron energy [meV]
+    """
+    energy = (momentum**2 / (2 * mn)) / meV2J
+    return energy
+
+def n_v_to_E(velocity):
+    """
+    Convert neutron velocity to energy
+    
+    Parameters
+    ----------
+    velocity : float or array
+        Neutron velocity [m/s]
+    
+    Returns
+    -------
+    energy : float or array
+        Neutron energy [meV]
+    """
+    energy = (0.5 * mn * velocity**2) / meV2J
+    return energy
+
+def n_E_to_v(energy):
+    """
+    Convert neutron energy to velocity
+    
+    Parameters
+    ----------
+    energy : float or array
+        Neutron energy [meV]
+    
+    Returns
+    -------
+    velocity : float or array
+        Neutron velocity [m/s]
+    """
+    velocity = np.sqrt(2 * energy * meV2J / mn)
+    return velocity
