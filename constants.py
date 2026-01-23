@@ -44,11 +44,11 @@ def get_species_mass(species):
         return mn
     
     # Helium-3
-    elif species_lower in ['he3', 'helium3', '3he']:
+    elif species_lower in ['he3', 'helium3', '3he', '3helium']:
         return mHe3
     
     # Helium-4
-    elif species_lower in ['he4', 'helium4', '4he']:
+    elif species_lower in ['he4', 'helium4', '4he', '4helium']:
         return mHe
     
     # Generic helium (defaults to He-4)
@@ -57,7 +57,7 @@ def get_species_mass(species):
         return mHe
     
     else:
-        raise ValueError(f"Unknown species: {species}. Use 'n', 'He-3', 'He-4', or 'He'")
+        raise ValueError(f"Unknown species: {species}. Use 'n', 'He-3', 'He-4'")
 
 
 # Conversion functions
