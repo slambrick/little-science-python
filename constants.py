@@ -23,6 +23,8 @@ meV2J = 1.6021892*1E-22  # Convert from meV to J
 # Neutron conversion functions
 # Species identification and mass lookup
 
+# TODO: add in the intensity conversions for ToF systems
+
 def get_species_mass(species):
     """
     Get the mass of a particle species from a string identifier
